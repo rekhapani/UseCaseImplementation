@@ -1,7 +1,7 @@
 node {
        def mvnHome
-   def projName = "\${env.JOB_NAME}"
-def workName = "\${env.WORKSPACE}"
+   def projName = "${env.JOB_NAME}"
+def workName = "${env.WORKSPACE}"
 
    def gitRepo = 'https://github.com/rekhapani/UseCaseImplementation.git'
    stage('Preparation') { // for display purposes
@@ -15,16 +15,16 @@ def workName = "\${env.WORKSPACE}"
    stage('Build') {
       // Run the maven build
       
-bat(/"\${mvnHome}\\bin\\mvn" -Dmaven.test.failure.ignore -f \${projName}\\pom.xml clean install/)
+bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore -f ${projName}\pom.xml clean install/)
      
 }
  stage('SonarQube analysis') {
-    ws("\${workName}\\\\\${projName}") {
+    ws("${workName}\\${projName}") {
     // requires SonarQube Scanner 2.8+
     def scannerHome = tool 'SONARSCANNER';
     withSonarQubeEnv('SONARQUBE 7.2') {
       
-       bat(/"\${mvnHome}\\bin\\mvn" org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar/) 
+       bat(/"${mvnHome}\bin\mvn" org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar/) 
       
     }
 /*context="sonarqube/qualitygate"
