@@ -3,7 +3,7 @@ node {
    def projName = "${env.JOB_NAME}"
 def workName = "${env.WORKSPACE}"
 
-   def gitRepo = 'https://github.com/rekhapani/UseCaseImplementation.git'
+   def gitRepo = 'https://github.com/rekhapani/referenceImplementatoin.git'
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git gitRepo
