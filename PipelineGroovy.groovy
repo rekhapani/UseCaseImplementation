@@ -15,7 +15,7 @@ def workName = "${env.WORKSPACE}"
    stage('Build') {
       // Run the maven build
       
-bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore -f ${projName}\pom.xml clean install/)
+bat(/"${mvnHome}\bin\mvn"  -f ${projName}\pom.xml clean install/)
      
 }
  stage('SonarQube analysis') {
