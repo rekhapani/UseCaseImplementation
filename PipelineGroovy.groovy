@@ -24,7 +24,7 @@ bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore -f ${projName}\pom.xml cle
     def scannerHome = tool 'SONARSCANNER';
     withSonarQubeEnv('SONARQUBE 7.2') {
       
-       bat(/"${mvnHome}\bin\mvn" org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar/) 
+       bat(/"${mvnHome}\bin\mvn" org.jacoco:jacoco-maven-plugin:prepare-agent install org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar/) 
       
     }
 /*context="sonarqube/qualitygate"
