@@ -24,7 +24,7 @@ bat(/"${mvnHome}\bin\mvn"  -f ${projName}\pom.xml clean install/)
     def scannerHome = tool 'SONARSCANNER';
     withSonarQubeEnv('SONARQUBE 7.2') {
       
-       bat(/"${mvnHome}\bin\mvn" org.codehaus.mojo:cobertura-maven-plugin:cobertura install  org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -Dsonar.java.coveragePlugin=cobertura /) 
+       bat(/"${mvnHome}\bin\mvn" org.codehaus.mojo:cobertura-maven-plugin:cobertura test  org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -Dsonar.java.coveragePlugin=cobertura /) 
       
     }
 /*context="sonarqube/qualitygate"
